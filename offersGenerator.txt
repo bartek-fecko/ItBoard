@@ -1,0 +1,18 @@
+[
+  '{{repeat(5, 7)}}',
+  {
+    _id: '{{objectId()}}',
+    employmentStatus: '{{random("Part-Time", "Full-Time", "Temporary", "Freelance")}}',
+    language: '{{random("javascript", "python", "C#", "C++")}}',
+    location: '{{city()}}',
+    salary: '{{integer(2500, 15000)}}',
+    company: '{{company().toUpperCase()}}',
+    seniority: '{{random("Junior", "Mid", "Senior")}}',
+    latitude: '{{floating(-90.000001, 90)}}',
+    longitude: '{{floating(-180.000001, 180)}}',
+    title: function(){
+    	return this.seniority + ' ' + this.language + ' ' + this.company;
+    }
+    
+  }
+]

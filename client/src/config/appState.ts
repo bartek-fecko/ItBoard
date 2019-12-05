@@ -1,5 +1,5 @@
-import { PostsState } from '#/store/PostsStore/constants';
+import { OffersState } from '#/store/OffersStore/constants';
 
 export default interface AppState {
-   posts: PostsState;
+   offers: OffersState;
 }

@@ -30,11 +30,11 @@ export const LevelLabel = styled.label`
   font-weight: 600;
   font-size: 0.7em;
   margin: 0 8px;
+  cursor: pointer;
 `;
 
 export const LevelInput = styled.input`
   opacity: 0;
-  cursor: pointer;
   &:checked ~ span {
     background: white;
     border: 2px solid orange;

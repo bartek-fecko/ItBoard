@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
 export const Wrapper = styled.div`
-   height: 600px;
+   min-height: 600px;
 `;
 

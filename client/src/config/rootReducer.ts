@@ -1,8 +1,8 @@
-import posts from '#/store/PostsStore/reducers';
+import offers from '#/store/OffersStore/reducers';
 import { combineReducers } from 'redux';
 
 const rootReducer = combineReducers({
-   posts,
+   offers,
 });
 
 export default rootReducer;
