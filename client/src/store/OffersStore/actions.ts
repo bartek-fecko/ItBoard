@@ -1,7 +1,8 @@
 import * as C from './constants';
 
-export function requestOffers() {
+export function requestOffers(params?: C.OffersParams) {
    return {
+      params,
       type: C.OffersTypes.OffersRequestData,
    } as C.OffersActions;
 }

@@ -1,3 +1,4 @@
+import Spinner from '#/components/Spinner/Spinner';
 import * as React from 'react';
 
 export interface WithLoaderProps {
@@ -11,7 +12,7 @@ const WithLoader: React.FC<WithLoaderProps> = ({ children, isLoading, error }) =
          ? error
          :
          isLoading
-            ? 'loading...'
+            ? <Spinner />
             : children
       }
    </>

@@ -15,9 +15,15 @@ export const Header = styled.h1`
    /* opacity: 0.9; */
 `;
 
-export const BoxsWrapper = styled.div`
+export const BoxesWrapper = styled.div`
    display: flex;
    margin: ${8 * 8}px auto;
+   @media screen and (max-width: 610px){
+      display: block;
+      & > div {
+         margin-top: 24px;
+      }
+   }
 `;
 
 export const BoxWrapper = styled.div`

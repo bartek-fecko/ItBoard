@@ -16,14 +16,17 @@ const AdvancedSearch: React.FC = () => {
          <h5>ADVANCED SEARCH</h5>
          <SelectWrapper>
             <CustomSelect>
+               <option selected>Select Language</option>
                <option>Accesories</option>
                <option>C++</option>
             </CustomSelect>
             <CustomSelect>
+               <option selected>Select your level</option>
                <option>Javscript</option>
                <option>C++</option>
             </CustomSelect>
             <CustomSelect>
+               <option selected>Select City</option>
                <option>Javscript</option>
                <option>C++</option>
             </CustomSelect>

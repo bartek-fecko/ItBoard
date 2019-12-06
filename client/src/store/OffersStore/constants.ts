@@ -19,6 +19,8 @@ export type OffersActions = {
    error: Error;
 };
 
+export type Seniority = 'junior' | 'mid' | 'senior';
+
 export interface Offer {
    company: string;
    employmentStatus: string;
@@ -27,9 +29,15 @@ export interface Offer {
    location: string;
    longitude: number;
    salary: number;
-   seniority: string;
+   seniority: Seniority;
    title: string;
    _id: string;
+}
+
+export interface OffersParams {
+   language?: string;
+   seniority?: Seniority;
+   location?: string;
 }
 
 export interface OffersState {

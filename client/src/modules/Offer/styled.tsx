@@ -17,6 +17,7 @@ export const Wrapper = styled.div`
 
 export const MainDescription = styled.div`
   display: flex;
+  width: 360px;
 `;
 
 export const TitleWrapper = styled.div`
@@ -38,7 +39,7 @@ export const EmploymentStatus = styled.span`
   color: #3DB7DC;
 `;
 
-export const SubTitle = styled.p`
+export const Company = styled.p`
   font-size: 0.8em;
   margin-top: 8px;
   color: rgba(0,0,0,0.5);
@@ -61,8 +62,10 @@ export const CityWrapper = styled.div`
   flex-grow: 1;
   display: flex;
   align-items: center;
+  justify-content: flex-start;
   padding-left: 150px;
   color: #7C8A95;
+  transform: translateY(-9px);
 `;
 
 export const City = styled.p`
