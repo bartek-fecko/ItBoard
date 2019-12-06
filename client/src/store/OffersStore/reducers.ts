@@ -1,6 +1,6 @@
 import * as C from './constants';
 
-const offersReducer = (state: C.OfferState = C.initialState, action: C.OffersActions) => {
+const offersReducer = (state: C.OffersState = C.initialState, action: C.OffersActions) => {
    switch (action.type) {
       case C.OffersTypes.OffersLoading:
          return {

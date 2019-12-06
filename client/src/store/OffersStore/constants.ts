@@ -32,13 +32,13 @@ export interface Offer {
    _id: string;
 }
 
-export interface OfferState {
+export interface OffersState {
    isLoading: boolean;
    data: Offer[];
    error: Error | false;
 }
 
-export const initialState: OfferState = {
+export const initialState: OffersState = {
    data: [],
    error: false,
    isLoading: false,
