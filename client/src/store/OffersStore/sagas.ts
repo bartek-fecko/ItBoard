@@ -7,7 +7,7 @@ import { OffersFilterParams, OffersTypes } from './constants';
 
 const getAllOffers = async () => {
    const db = await firebaseApp.firestore();
-   const querySnapshot = await db.collection('offers').get(); // request without params
+   const querySnapshot = await db.collection('offers').limit(3).get(); // request without params
    const allOffers = await querySnapshot.docs.map((doc) => doc.data());
    return allOffers;
 };

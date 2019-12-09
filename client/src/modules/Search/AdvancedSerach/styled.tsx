@@ -18,6 +18,7 @@ const blueColor = 'rgba(0, 187, 236, 1)';
 
 export const CustomSelect = styled.select`
    display: block;
+   max-width: calc(50% - 8px);
    flex-grow: 1;
 	font-size: 14px;
 	font-weight: 600;
@@ -26,6 +27,7 @@ export const CustomSelect = styled.select`
 	padding: 8px 24px;
 	box-sizing: border-box;
 	margin: 0;
+   margin-top: 8px;
 	border: 1px solid rgba(0,0,0,0.2);
 	-moz-appearance: none;
 	-webkit-appearance: none;
