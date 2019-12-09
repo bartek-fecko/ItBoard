@@ -7,6 +7,14 @@ const offersReducer = (state: C.OffersState = C.initialState, action: C.OffersAc
             ...state,
             isLoading: action.isLoading,
          };
+      case C.OffersTypes.OffersSetFilterParams:
+         return {
+            ...state,
+            filterParams: {
+               ...state.filterParams,
+               ...action.filterParams,
+            },
+         };
       case C.OffersTypes.OffersRequestSucess:
          return {
             ...state,

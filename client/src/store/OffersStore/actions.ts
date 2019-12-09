@@ -1,9 +1,16 @@
 import * as C from './constants';
 
-export function requestOffers(params?: C.OffersParams) {
+export function requestOffers(params?: C.OffersFilterParams) {
    return {
       params,
       type: C.OffersTypes.OffersRequestData,
+   } as C.OffersActions;
+}
+
+export function setFilterParams(filterParams: C.OffersFilterParams) {
+   return {
+      filterParams,
+      type: C.OffersTypes.OffersSetFilterParams,
    } as C.OffersActions;
 }
 
@@ -12,7 +19,7 @@ export function requestOffersSucess(data: C.Offer[]) {
       data,
       isLoading: false,
       type: C.OffersTypes.OffersRequestSucess,
-   };
+   } as C.OffersActions;
 }
 
 export function loading(isLoading: boolean) {

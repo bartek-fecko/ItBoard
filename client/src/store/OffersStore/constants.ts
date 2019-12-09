@@ -1,5 +1,6 @@
 export enum OffersTypes {
    OffersRequestData = 'Offers/GET',
+   OffersSetFilterParams = 'Offers/SETFILTERS',
    OffersRequestSucess = 'Offers/Sucess',
    OffersLoading = 'Offers/Loading',
    OffersError = 'Offers/Error',
@@ -9,8 +10,10 @@ export type OffersActions = {
    type: OffersTypes.OffersLoading;
    isLoading: true;
 } | {
+   type: OffersTypes.OffersSetFilterParams;
+   filterParams: OffersFilterParams;
+} | {
    type: OffersTypes.OffersRequestData;
-   // articlesPerPage: number;
 } | {
    type: OffersTypes.OffersRequestSucess;
    data: Offer[];
@@ -20,6 +23,9 @@ export type OffersActions = {
 };
 
 export type Seniority = 'junior' | 'mid' | 'senior';
+export const programmingLanguage = ['javascript', 'C++', 'C#', 'python'];
+export const seniority = ['junior', 'mid', 'senior'];
+export const cities = [];
 
 export interface Offer {
    company: string;
@@ -34,20 +40,23 @@ export interface Offer {
    _id: string;
 }
 
-export interface OffersParams {
+export interface OffersFilterParams {
    language?: string;
    seniority?: Seniority;
    location?: string;
+   text?: string;
 }
 
 export interface OffersState {
    isLoading: boolean;
    data: Offer[];
+   filterParams: OffersFilterParams;
    error: Error | false;
 }
 
 export const initialState: OffersState = {
    data: [],
    error: false,
+   filterParams: {},
    isLoading: false,
 };
