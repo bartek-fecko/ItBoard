@@ -1,4 +1,4 @@
-import { Offer } from '#/store/OffersStore/constants';
+import { IOffer } from '#/store/OffersStore/constants';
 import useWindowDimensions from '#/utils/useWindowDimensions';
 import * as React from 'react';
 import OfferCity from './OfferCity/OfferCity';
@@ -9,7 +9,7 @@ import {
 } from './styled';
 
 export interface OfferProps {
-   data: Offer;
+   data: IOffer;
 }
 
 const Offer: React.FC<OfferProps> = ({ data: {
@@ -21,7 +21,6 @@ const Offer: React.FC<OfferProps> = ({ data: {
    title,
    salary,
 } }) => {
-   const [image, setImage] = React.useState<string>();
    const { width } = useWindowDimensions();
    return (
       <Wrapper>

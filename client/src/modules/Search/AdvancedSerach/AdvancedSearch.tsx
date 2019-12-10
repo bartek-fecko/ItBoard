@@ -1,13 +1,16 @@
 import AppState from '#/config/appState';
+import history from '#/config/browserHistory';
 import { requestOffers, setFilterParams } from '#/store/OffersStore/actions';
 import {
+   offerCities,
+   offerProgrammingLanguages,
    OffersActions,
-   OffersFilterParams,
-   programmingLanguage,
-   seniority,
+   offerSeniority,
+   UseQueryParamsConstructor,
 } from '#/store/OffersStore/constants';
 import * as React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { StringParam, useQueryParams } from 'use-query-params';
 import {
    ApplyButton,
    Buttons,
@@ -22,18 +25,29 @@ import {
 const AdvancedSearch: React.FC = () => {
    const dispatch = useDispatch<React.Dispatch<OffersActions>>();
    const filterParams = useSelector((state: AppState) => state.offers.filterParams);
-   const [value, setValue] = React.useState<OffersFilterParams>({});
+   const [queries] = useQueryParams<UseQueryParamsConstructor>({
+      language: StringParam,
+      location: StringParam,
+      seniority: StringParam,
+      text: StringParam,
+   });
+   const offersTotal = useSelector((state: AppState) => state.offers.totalOffers);
 
    const changeSelectValue = (e) => {
       const selectInput = e.target as HTMLSelectElement;
       const selectName = selectInput.name;
       const selectValue = selectInput.value;
-      setValue({ [selectName]: selectValue });
       dispatch(setFilterParams({ [selectName]: selectValue }));
    };
 
    const handleGetOffers = () => {
       dispatch(requestOffers(filterParams));
+   };
+
+   const handleResetOffers = () => {
+      dispatch(setFilterParams({}));
+      history.push('/');
+      dispatch(requestOffers());
    };
 
    return (
@@ -42,10 +56,11 @@ const AdvancedSearch: React.FC = () => {
          <SelectWrapper>
             <CustomSelect
                name="language"
+               defaultValue={queries.language}
                onChange={changeSelectValue}
             >
-               <option>Select Language</option>
-               {programmingLanguage.map((language: string, i: number) => (
+               <option value="">Select Language</option>
+               {offerProgrammingLanguages.map((language: string, i: number) => (
                   <option
                      value={language}
                      key={i}
@@ -56,10 +71,11 @@ const AdvancedSearch: React.FC = () => {
             </CustomSelect>
             <CustomSelect
                name="seniority"
+               defaultValue={queries.seniority}
                onChange={changeSelectValue}
             >
-               <option>Select your level</option>
-               {seniority.map((level: string, i: number) => (
+               <option value="">Select your level</option>
+               {offerSeniority.map((level: string, i: number) => (
                   <option
                      value={level}
                      key={i}
@@ -68,19 +84,29 @@ const AdvancedSearch: React.FC = () => {
                   </option>
                ))}
             </CustomSelect>
-            <CustomSelect>
-               <option>Select City</option>
-               <option>Javscript</option>
-               <option>C++</option>
+            <CustomSelect
+               name="location"
+               defaultValue={queries.location}
+               onChange={changeSelectValue}
+            >
+               <option value="">Select City</option>
+               {offerCities.map((city: string, i: number) => (
+                  <option
+                     value={city}
+                     key={i}
+                  >
+                     {city}
+                  </option>
+               ))}
             </CustomSelect>
          </SelectWrapper>
          <Tools>
             <ResultCounter>
-               <span>108</span>
+               <span>{offersTotal}</span>
                <span>results</span>
             </ResultCounter>
             <Buttons>
-               <ResetButton>RESET</ResetButton>
+               <ResetButton onClick={handleResetOffers}>RESET</ResetButton>
                <ApplyButton onClick={handleGetOffers}>SEARCH</ApplyButton>
             </Buttons>
          </Tools>

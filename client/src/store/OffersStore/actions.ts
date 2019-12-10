@@ -14,11 +14,18 @@ export function setFilterParams(filterParams: C.OffersFilterParams) {
    } as C.OffersActions;
 }
 
-export function requestOffersSucess(data: C.Offer[]) {
+export function requestOffersSucess(data: C.IOffer[]) {
    return {
       data,
       isLoading: false,
       type: C.OffersTypes.OffersRequestSucess,
+   } as C.OffersActions;
+}
+
+export function setOffersTotal(totalOffers: number) {
+   return {
+      totalOffers,
+      type: C.OffersTypes.OffersSetTotal,
    } as C.OffersActions;
 }
 

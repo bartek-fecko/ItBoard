@@ -48,7 +48,7 @@ const OfferMainDescription: React.FC<OfferMainDescriptionProps> = ({
          default:
             break;
       }
-   }, []);
+   }, [language]);
 
    return (
       <Wrapper>

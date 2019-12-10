@@ -21,6 +21,11 @@ const offersReducer = (state: C.OffersState = C.initialState, action: C.OffersAc
             data: action.data,
             isLoading: false,
          };
+      case C.OffersTypes.OffersSetTotal:
+         return {
+            ...state,
+            totalOffers: action.totalOffers,
+         };
       case C.OffersTypes.OffersError:
          return {
             ...state,

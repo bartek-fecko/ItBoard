@@ -1,7 +1,10 @@
+import { StringParam } from 'use-query-params';
+
 export enum OffersTypes {
    OffersRequestData = 'Offers/GET',
    OffersSetFilterParams = 'Offers/SETFILTERS',
    OffersRequestSucess = 'Offers/Sucess',
+   OffersSetTotal = 'Offers/Total',
    OffersLoading = 'Offers/Loading',
    OffersError = 'Offers/Error',
 }
@@ -15,19 +18,22 @@ export type OffersActions = {
 } | {
    type: OffersTypes.OffersRequestData;
 } | {
+   type: OffersTypes.OffersSetTotal;
+   totalOffers: number;
+} | {
    type: OffersTypes.OffersRequestSucess;
-   data: Offer[];
+   data: IOffer[];
 } | {
    type: OffersTypes.OffersError;
    error: Error;
 };
 
 export type Seniority = 'junior' | 'mid' | 'senior';
-export const programmingLanguage = ['javascript', 'C++', 'C#', 'python'];
-export const seniority = ['junior', 'mid', 'senior'];
-export const cities = [];
+export const offerProgrammingLanguages = ['javascript', 'C++', 'C#', 'python'];
+export const offerSeniority = ['junior', 'mid', 'senior'];
+export const offerCities = ['Kraków', 'Lublin', 'Warszawa', 'Gdańsk', 'Rzeszów'];
 
-export interface Offer {
+export interface IOffer {
    company: string;
    employmentStatus: string;
    language: string;
@@ -47,10 +53,15 @@ export interface OffersFilterParams {
    text?: string;
 }
 
+export type UseQueryParamsConstructor = {
+   [key in keyof OffersFilterParams]: typeof StringParam;
+};
+
 export interface OffersState {
    isLoading: boolean;
-   data: Offer[];
+   data: IOffer[];
    filterParams: OffersFilterParams;
+   totalOffers: number;
    error: Error | false;
 }
 
@@ -59,4 +70,5 @@ export const initialState: OffersState = {
    error: false,
    filterParams: {},
    isLoading: false,
+   totalOffers: 0,
 };

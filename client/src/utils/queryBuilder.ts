@@ -4,7 +4,7 @@ export interface Params {
 
 export class QueryBuilder {
    public encode(params: Params) {
-      return Object.keys(params).map((key) => (
+      return '?' + Object.keys(params).map((key) => (
          `${key}=${encodeURIComponent(params[key])}`
       )).join('&');
    }

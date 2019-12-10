@@ -79,6 +79,7 @@ const Button = styled.button`
    outline: none;
    border: none;
    font-weight: 700;
+   z-index: 4;
 `;
 
 export const ResetButton = styled(Button)`
