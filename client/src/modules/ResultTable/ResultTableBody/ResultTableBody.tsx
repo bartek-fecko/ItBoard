@@ -3,12 +3,11 @@ import WithLoader from '#/components/WithLoader/WithLoader';
 import AppState from '#/config/appState';
 import Offer from '#/modules/Offer/Offer';
 import { requestOffers, setFilterParams, setOffersTotal } from '#/store/OffersStore/actions';
-import { IOffer, OffersFilterParams } from '#/store/offersStore/constants';
-import { UseQueryParamsConstructor } from '#/store/OffersStore/constants';
+import { OffersFilterParams, UseQueryParamsConstructor } from '#/store/OffersStore/constants';
 import * as React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { StringParam, useQueryParams } from 'use-query-params';
-import { filterByQueries, deleteEmptyQueries } from './helpers';
+import { deleteEmptyQueries, filterByQueries } from './helpers';
 import { Wrapper } from './styled';
 
 const ResultTableBody: React.FC = () => {

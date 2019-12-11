@@ -55,10 +55,11 @@ const OfferMainDescription: React.FC<OfferMainDescriptionProps> = ({
          <Image src={image || null} />
          <div>
             <TitleWrapper>
-               <Title>{title}
+               <Title>{title}</Title>
+               <EmploymentStatus>
                   <Banner src={bannerIcon} />
-               </Title>
-               <EmploymentStatus>{employmentStatus}</EmploymentStatus>
+                  {employmentStatus}
+               </EmploymentStatus>
             </TitleWrapper>
             <SubTextWrapper>
                <Company>{company}</Company>

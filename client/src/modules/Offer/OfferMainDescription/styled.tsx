@@ -13,8 +13,16 @@ export const TitleWrapper = styled.div`
 export const Title = styled.h4`
   margin-top: 0.10em;
   margin-bottom: 0;
-  span {
-    color: #3DB7DC;
+  max-width: 170px;
+  height: 20px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  img {
+    display: none;
+    @media screen and (min-width: 420px) {
+      display: inline-block;
+    }
   }
   /* color: #4E5661; */
   /* font-weight: 700; */
@@ -22,6 +30,10 @@ export const Title = styled.h4`
 
 export const EmploymentStatus = styled.span`
   color: #3DB7DC;
+  display: none;
+  @media screen and (min-width: 420px) {
+    display: block;
+  }
 `;
 
 export const Company = styled.p`
