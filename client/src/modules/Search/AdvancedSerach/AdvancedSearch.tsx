@@ -1,6 +1,9 @@
 import AppState from '#/config/appState';
 import history from '#/config/browserHistory';
-import { requestOffers, setFilterParams } from '#/store/OffersStore/actions';
+import {
+   removeFilterParams,
+   requestOffers,
+} from '#/store/OffersStore/actions';
 import {
    offerCities,
    offerProgrammingLanguages,
@@ -11,10 +14,10 @@ import {
 import * as React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { StringParam, useQueryParams } from 'use-query-params';
+import SelectInput from './SelectInput/SelectInput';
 import {
    ApplyButton,
    Buttons,
-   CustomSelect,
    ResetButton,
    ResultCounter,
    SelectWrapper,
@@ -33,19 +36,12 @@ const AdvancedSearch: React.FC = () => {
    });
    const offersTotal = useSelector((state: AppState) => state.offers.totalOffers);
 
-   const changeSelectValue = (e) => {
-      const selectInput = e.target as HTMLSelectElement;
-      const selectName = selectInput.name;
-      const selectValue = selectInput.value;
-      dispatch(setFilterParams({ [selectName]: selectValue }));
-   };
-
    const handleGetOffers = () => {
       dispatch(requestOffers(filterParams));
    };
 
    const handleResetOffers = () => {
-      dispatch(setFilterParams({}));
+      dispatch(removeFilterParams());
       history.push('/');
       dispatch(requestOffers());
    };
@@ -54,51 +50,24 @@ const AdvancedSearch: React.FC = () => {
       <Wrapper>
          <h5>ADVANCED SEARCH</h5>
          <SelectWrapper>
-            <CustomSelect
+            <SelectInput
+               optionArray={offerProgrammingLanguages}
+               placeholder="Select your language"
                name="language"
-               defaultValue={queries.language}
-               onChange={changeSelectValue}
-            >
-               <option value="">Select Language</option>
-               {offerProgrammingLanguages.map((language: string, i: number) => (
-                  <option
-                     value={language}
-                     key={i}
-                  >
-                     {language}
-                  </option>
-               ))}
-            </CustomSelect>
-            <CustomSelect
+               queries={queries}
+            />
+            <SelectInput
+               optionArray={offerSeniority}
+               placeholder="Select seniority"
                name="seniority"
-               defaultValue={queries.seniority}
-               onChange={changeSelectValue}
-            >
-               <option value="">Select your level</option>
-               {offerSeniority.map((level: string, i: number) => (
-                  <option
-                     value={level}
-                     key={i}
-                  >
-                     {level}
-                  </option>
-               ))}
-            </CustomSelect>
-            <CustomSelect
+               queries={queries}
+            />
+            <SelectInput
+               optionArray={offerCities}
+               placeholder="Select city"
                name="location"
-               defaultValue={queries.location}
-               onChange={changeSelectValue}
-            >
-               <option value="">Select City</option>
-               {offerCities.map((city: string, i: number) => (
-                  <option
-                     value={city}
-                     key={i}
-                  >
-                     {city}
-                  </option>
-               ))}
-            </CustomSelect>
+               queries={queries}
+            />
          </SelectWrapper>
          <Tools>
             <ResultCounter>

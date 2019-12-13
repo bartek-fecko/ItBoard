@@ -15,6 +15,11 @@ const offersReducer = (state: C.OffersState = C.initialState, action: C.OffersAc
                ...action.filterParams,
             },
          };
+      case C.OffersTypes.OffersRemoveFilterParams:
+         return {
+            ...state,
+            filterParams: {},
+         };
       case C.OffersTypes.OffersRequestSucess:
          return {
             ...state,

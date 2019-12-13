@@ -3,6 +3,7 @@ import { StringParam } from 'use-query-params';
 export enum OffersTypes {
    OffersRequestData = 'Offers/GET',
    OffersSetFilterParams = 'Offers/SETFILTERS',
+   OffersRemoveFilterParams = 'Offers/RemoveFilters',
    OffersRequestSucess = 'Offers/Sucess',
    OffersSetTotal = 'Offers/Total',
    OffersLoading = 'Offers/Loading',
@@ -17,6 +18,8 @@ export type OffersActions = {
    filterParams: OffersFilterParams;
 } | {
    type: OffersTypes.OffersRequestData;
+} | {
+   type: OffersTypes.OffersRemoveFilterParams;
 } | {
    type: OffersTypes.OffersSetTotal;
    totalOffers: number;

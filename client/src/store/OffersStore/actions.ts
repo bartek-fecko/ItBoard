@@ -14,6 +14,12 @@ export function setFilterParams(filterParams: C.OffersFilterParams) {
    } as C.OffersActions;
 }
 
+export function removeFilterParams() {
+   return {
+      type: C.OffersTypes.OffersRemoveFilterParams,
+   } as C.OffersActions;
+}
+
 export function requestOffersSucess(data: C.IOffer[]) {
    return {
       data,
